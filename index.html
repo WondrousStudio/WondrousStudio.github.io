@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5ed">
+  <meta name="description" content="Wondrous Studio — small games, big wonder. A playful game studio. Meet the studio, get in touch, and read our website privacy policy.">
+  <meta name="color-scheme" content="light">
+  <title>Wondrous Studio — Small games. Big wonder.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='20' fill='%231d4438'/%3E%3Cpath d='M12 22l9 24 11-18 11 18 9-24' fill='none' stroke='%23d9ef9e' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>
+    /* Wondrous Studio. All styles, illustrations, and scripts are in this file. */
+    :root {
+      --paper: #f5f5ed;
+      --ink: #1d4438;
+      --muted: #5c6b60;
+      --line: #d9dfd2;
+      --lime: #d9ef9e;
+      --coral: #ee795b;
+      --yellow: #f2cd65;
+      --white: #fffef8;
+      --radius: 28px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 108px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Avenir Next", Avenir, "Segoe UI", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    button, a { touch-action: manipulation; }
+    a { color: inherit; }
+    button { cursor: pointer; }
+    svg { display: block; }
+    a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 3px solid #a4472c; outline-offset: 5px; }
+    ::selection { background: var(--lime); color: var(--ink); }
+    [hidden] { display: none !important; }
+    .wrap { width: min(1180px, calc(100% - 80px)); margin-inline: auto; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .skip-link { position: fixed; top: -100px; left: 16px; z-index: 100; background: var(--ink); color: white; padding: 12px 18px; border-radius: 8px; }
+    .skip-link:focus { top: 12px; }
+    .icon { width: 20px; height: 20px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .site-header { position: relative; z-index: 10; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; height: 112px; border-bottom: 1px solid var(--line); }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
+    .brand-mark { width: 43px; height: 43px; }
+    .brand-name { font-size: 21px; font-weight: 750; letter-spacing: -1px; line-height: 1; }
+    .brand-name small { display: block; font-size: 9px; letter-spacing: 4.1px; font-weight: 650; margin-top: 7px; padding-left: 2px; }
+    .tabs { display: flex; align-items: center; gap: 4px; background: #e8ecdf; border: 1px solid #e1e6d8; padding: 5px; border-radius: 40px; }
+    .tab { font-size: 13px; font-weight: 650; text-decoration: none; padding: 11px 25px; border-radius: 30px; transition: background .2s, color .2s; }
+    .tab[aria-selected="true"] { background: var(--ink); color: var(--white); }
+    .tab:hover:not([aria-selected="true"]) { background: #dce3d2; }
+    .header-contact { display: inline-flex; align-items: center; gap: 12px; font-size: 13px; text-decoration: none; font-weight: 650; }
+    .circle-link { display: grid; place-items: center; width: 33px; height: 33px; border: 1px solid #b7c5b3; border-radius: 50%; transition: background .2s; }
+    .header-contact:hover .circle-link { background: var(--lime); }
+    .hero { display: grid; grid-template-columns: 1fr 1.05fr; align-items: center; gap: 10px; padding-top: 52px; padding-bottom: 54px; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 750; letter-spacing: 2.5px; text-transform: uppercase; line-height: 1.6; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink); flex: 0 0 auto; }
+    h1, h2, h3, p { margin: 0; }
+    .hero h1 { font-size: clamp(64px, 6.8vw, 91px); line-height: 1.01; letter-spacing: -5px; font-weight: 650; margin: 26px 0; }
+    .serif { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-style: italic; letter-spacing: -4px; }
+    .hero-description { max-width: 370px; font-size: 16px; line-height: 1.8; color: var(--muted); }
+    .hero-actions { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; margin-top: 30px; }
+    .button { display: inline-flex; justify-content: center; align-items: center; gap: 22px; border: 1px solid transparent; border-radius: 100px; padding: 16px 24px; text-decoration: none; font-size: 13px; font-weight: 650; transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--ink); color: var(--white); }
+    .button-primary:hover { background: #2b5946; }
+    .text-link { display: inline-flex; gap: 9px; align-items: center; font-size: 13px; font-weight: 600; text-decoration: none; border-bottom: 1px solid #adbba7; padding-bottom: 3px; }
+    .text-link:hover { border-color: var(--ink); }
+    .hero-footnote { display: flex; align-items: center; gap: 10px; margin-top: 43px; color: var(--muted); font-size: 11px; }
+    .hero-footnote .icon { width: 16px; height: 16px; }
+    .hero-art { position: relative; min-width: 0; }
+    .hero-art > svg { width: 100%; height: auto; overflow: visible; }
+    .art-float { animation: bob 7s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .art-float-slow { animation: bob 9s 1s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    .intro-strip { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 23px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .intro-strip > p { font-size: 12px; color: var(--muted); }
+    .intro-tags { display: flex; align-items: center; gap: 30px; font-size: 11px; font-weight: 650; letter-spacing: 1.5px; text-transform: uppercase; }
+    .intro-tag { display: inline-flex; gap: 10px; align-items: center; }
+    .intro-tag svg { width: 17px; height: 17px; }
+    .studio { padding-top: 92px; padding-bottom: 88px; }
+    .studio-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; align-items: end; }
+    .section-title { font-size: clamp(34px, 4vw, 51px); line-height: 1.13; letter-spacing: -2px; font-weight: 600; margin-top: 17px; }
+    .section-title .serif { letter-spacing: -2px; }
+    .studio-description { color: var(--muted); font-size: 15px; line-height: 1.85; max-width: 400px; justify-self: end; padding-bottom: 4px; }
+    .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 21px; margin-top: 40px; }
+    .value { border: 1px solid var(--line); border-radius: 19px; padding: 28px; background: #f1f3e8; position: relative; }
+    .value-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 29px; }
+    .value-number { color: #68785f; font-size: 10px; letter-spacing: 1px; }
+    .value-symbol { width: 40px; height: 40px; }
+    .value h3 { font-size: 18px; font-weight: 650; letter-spacing: -.4px; margin-bottom: 10px; }
+    .value p { font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 260px; }
+    .value:nth-child(2) { background: #f4eee3; }
+    .value:nth-child(3) { background: #edf0e7; }
+    .contact { background: var(--ink); color: var(--paper); border-radius: var(--radius); padding: 47px 52px; display: flex; justify-content: space-between; gap: 35px; align-items: center; position: relative; overflow: hidden; }
+    .contact .eyebrow { color: #c7d7b7; font-size: 9px; }
+    .contact h2 { font-size: 40px; font-weight: 500; letter-spacing: -1.8px; line-height: 1.15; margin: 15px 0 12px; }
+    .contact h2 .serif { letter-spacing: -1.5px; color: var(--lime); }
+    .contact p { color: #c4d2c3; line-height: 1.8; font-size: 13px; max-width: 380px; }
+    .contact-actions { flex-shrink: 0; text-align: right; position: relative; }
+    .email-link { display: inline-flex; align-items: center; justify-content: center; gap: 16px; font-size: 14px; font-weight: 650; background: var(--lime); color: var(--ink); text-decoration: none; padding: 19px 23px; border-radius: 100px; transition: background .2s, transform .2s; }
+    .email-link:hover { background: #e5f8b7; transform: translateY(-2px); }
+    .copy-button { display: inline-flex; gap: 7px; align-items: center; border: 0; background: transparent; color: #d5dfcc; font-size: 11px; padding: 12px 0 0; }
+    .copy-button:hover { color: white; }
+    .copy-button .icon { width: 13px; height: 13px; }
+    .copy-status { font-size: 11px; min-height: 16px; color: var(--lime); margin-top: 6px; }
+    .footer-inner { min-height: 105px; display: flex; justify-content: space-between; align-items: center; gap: 24px; color: var(--muted); font-size: 11px; }
+    .footer-left { display: flex; align-items: center; gap: 15px; }
+    .footer-mark { width: 24px; height: 24px; }
+    .footer-links { display: flex; align-items: center; gap: 25px; }
+    .footer-links a { text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .footer-tagline { color: var(--muted); }
+    /* Privacy is a real, independently addressable tab: index.html#privacy. */
+    .privacy-top { padding: 61px 0 36px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: end; gap: 24px; }
+    .privacy-top h1 { font-size: clamp(46px, 6vw, 70px); font-weight: 600; letter-spacing: -3px; line-height: 1.1; margin: 17px 0 20px; }
+    .privacy-top h1 .serif { letter-spacing: -3px; }
+    .privacy-subtitle { color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .policy-date { display: inline-block; font-size: 11px; color: var(--muted); margin-top: 12px; }
+    .button-outline { border: 1px solid #b4c2ac; background: transparent; color: var(--ink); padding: 12px 18px; gap: 9px; white-space: nowrap; font-size: 12px; }
+    .button-outline:hover { background: #e7eddf; }
+    .privacy-layout { display: grid; grid-template-columns: 225px minmax(0, 1fr); gap: 68px; padding: 44px 0 70px; }
+    .privacy-nav { align-self: start; position: sticky; top: 32px; }
+    .privacy-nav h2 { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 20px; }
+    .privacy-nav ol { list-style: none; margin: 0; padding: 0; counter-reset: policy; }
+    .privacy-nav li { counter-increment: policy; }
+    .privacy-nav a { display: flex; gap: 13px; padding: 10px 0; text-decoration: none; font-size: 12px; line-height: 1.5; color: var(--muted); }
+    .privacy-nav a::before { content: counter(policy, decimal-leading-zero); font-size: 10px; line-height: 1.8; color: #65755b; }
+    .privacy-nav a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+    .privacy-help { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 22px; }
+    .privacy-help p { font-size: 12px; line-height: 1.75; color: var(--muted); }
+    .privacy-help a { display: inline-flex; gap: 8px; margin-top: 7px; padding: 0; color: var(--ink); font-weight: 650; }
+    .privacy-help a::before { content: none; }
+    .privacy-summary { background: #e8eedb; border: 1px solid #d5e1c1; padding: 23px 26px; border-radius: 15px; margin-bottom: 34px; display: flex; align-items: flex-start; gap: 15px; }
+    .privacy-summary > .icon { width: 24px; height: 24px; margin-top: 2px; }
+    .privacy-summary h2 { font-size: 15px; margin-bottom: 7px; font-weight: 650; }
+    .privacy-summary p { color: #4e624a; font-size: 13px; line-height: 1.8; }
+    .policy-section { margin-bottom: 33px; scroll-margin-top: 30px; }
+    .policy-section:last-child { margin-bottom: 0; }
+    .policy-section h2 { font-size: 20px; font-weight: 650; letter-spacing: -.4px; margin-bottom: 13px; }
+    .policy-section h2 span { font-size: 11px; color: #68785f; margin-right: 10px; letter-spacing: 1px; vertical-align: middle; }
+    .policy-section p { font-size: 14px; line-height: 1.9; color: var(--muted); margin-bottom: 12px; }
+    .policy-section p:last-child { margin-bottom: 0; }
+    .policy-section a { color: var(--ink); text-underline-offset: 3px; overflow-wrap: anywhere; }
+    .policy-contact-card { background: #eef1e6; border: 1px solid var(--line); border-radius: 15px; padding: 22px 25px; margin-top: 18px; }
+    .policy-contact-card strong { font-size: 15px; display: block; margin-bottom: 5px; }
+    .policy-contact-card a { font-size: 13px; line-height: 1.8; }
+    noscript p { padding: 16px; margin: 16px auto; border: 1px solid var(--line); max-width: 1180px; font-size: 13px; }
+    @media (min-width: 1500px) { .hero { padding-top: 60px; padding-bottom: 65px; } }
+    @media (max-width: 1000px) {
+      .wrap { width: calc(100% - 56px); }
+      .hero { padding-top: 48px; padding-bottom: 45px; }
+      .hero h1 { font-size: clamp(48px, 6.8vw, 68px); letter-spacing: -3px; }
+      .hero h1 .serif { letter-spacing: -4px; }
+      .hero-art { margin-left: -12px; }
+      .hero-actions { gap: 16px; }
+      .hero-footnote { margin-top: 30px; }
+      .intro-tags { gap: 18px; font-size: 10px; }
+      .studio { padding-top: 70px; padding-bottom: 65px; }
+      .value { padding: 23px; }
+      .contact { padding: 36px; gap: 25px; }
+      .contact h2 { font-size: 34px; }
+      .email-link { font-size: 12px; padding: 17px; gap: 10px; }
+      .footer-tagline { display: none; }
+      .privacy-layout { gap: 35px; grid-template-columns: 190px minmax(0, 1fr); }
+    }
+    @media (max-width: 740px) {
+      .header-inner { height: 92px; }
+      .header-contact { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 46px; gap: 5px; padding-bottom: 24px; }
+      .hero h1 { font-size: clamp(59px, 11vw, 82px); }
+      .hero-description { max-width: 420px; }
+      .hero-art { margin: 0 auto; width: min(100%, 490px); }
+      .hero-footnote { margin-top: 26px; }
+      .intro-strip { flex-direction: column; align-items: flex-start; gap: 18px; }
+      .intro-tags { gap: 28px; }
+      .studio-heading { grid-template-columns: 1fr; gap: 20px; }
+      .studio-description { justify-self: start; max-width: 510px; }
+      .values { grid-template-columns: 1fr; gap: 13px; margin-top: 28px; }
+      .value { display: grid; grid-template-columns: 52px 1fr; column-gap: 20px; padding: 23px; }
+      .value-top { grid-row: 1 / 3; flex-direction: column; align-items: flex-start; gap: 16px; justify-content: center; margin: 0; }
+      .value-symbol { width: 36px; height: 36px; }
+      .value h3 { align-self: end; }
+      .value p { max-width: 100%; }
+      .value-number { order: 1; margin-left: 9px; }
+      .contact { flex-direction: column; align-items: flex-start; gap: 25px; }
+      .contact-actions { text-align: left; width: 100%; }
+      .email-link { font-size: 13px; padding: 17px 21px; }
+      .copy-row { margin-left: 3px; }
+      .footer-inner { padding: 27px 0; min-height: 105px; flex-wrap: wrap; gap: 18px; }
+      .privacy-top { padding-top: 43px; }
+      .privacy-top h1 { font-size: 52px; }
+      .privacy-layout { grid-template-columns: 1fr; gap: 30px; padding-top: 30px; }
+      .privacy-nav { position: static; border-bottom: 1px solid var(--line); padding-bottom: 25px; }
+      .privacy-nav ol { display: grid; grid-template-columns: 1fr 1fr; column-gap: 15px; }
+      .privacy-nav a { padding: 8px 0; }
+      .privacy-nav h2 { margin-bottom: 12px; }
+      .privacy-help { display: none; }
+      .privacy-summary { padding: 20px; }
+    }
+    @media (max-width: 430px) {
+      .wrap { width: calc(100% - 36px); }
+      .header-inner { gap: 12px; height: 88px; }
+      .brand { gap: 8px; }
+      .brand-mark { width: 34px; height: 34px; }
+      .brand-name { font-size: 17px; letter-spacing: -.7px; }
+      .brand-name small { font-size: 7px; letter-spacing: 3.3px; margin-top: 5px; }
+      .tabs { padding: 4px; gap: 1px; }
+      .tab { font-size: 11px; padding: 10px 15px; }
+      .hero h1 { font-size: clamp(51px, 14.9vw, 64px); letter-spacing: -3.5px; margin: 22px 0; }
+      .hero h1 .serif { letter-spacing: -3px; }
+      .hero-description { font-size: 14px; max-width: 320px; }
+      .eyebrow { font-size: 9px; letter-spacing: 2px; }
+      .button { font-size: 12px; padding: 15px 21px; gap: 15px; }
+      .hero-actions { margin-top: 26px; gap: 20px; }
+      .text-link { font-size: 12px; }
+      .hero-footnote { font-size: 10px; }
+      .intro-tags { gap: 19px; font-size: 9px; letter-spacing: .9px; }
+      .intro-tag { gap: 7px; }
+      .intro-strip > p { font-size: 11px; }
+      .studio { padding-top: 55px; padding-bottom: 47px; }
+      .section-title { font-size: 36px; }
+      .studio-description { font-size: 14px; }
+      .contact { padding: 31px 24px 25px; border-radius: 23px; }
+      .contact h2 { font-size: 33px; }
+      .email-link { font-size: 11px; padding: 16px 15px; gap: 8px; }
+      .email-link .icon { width: 17px; }
+      .footer-left { gap: 9px; font-size: 10px; }
+      .footer-links { gap: 22px; }
+      .privacy-top { display: block; padding-top: 36px; }
+      .privacy-top h1 { font-size: 48px; }
+      .privacy-top .button { margin-top: 22px; padding: 11px 16px; }
+      .privacy-subtitle { font-size: 13px; }
+      .privacy-nav a { font-size: 11px; gap: 8px; }
+      .privacy-summary { gap: 10px; padding: 19px 17px; }
+      .policy-section h2 { font-size: 18px; }
+      .policy-section p { font-size: 13px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+    @media print {
+      @page { margin: 18mm; }
+      body { background: white; color: black; }
+      .wrap { width: 100%; max-width: none; }
+      .site-header, .site-footer, .privacy-nav, .print-button, .skip-link, .hero-art, .hero-actions, .copy-row { display: none !important; }
+      .privacy-top { padding: 0 0 20px; }
+      .privacy-top h1 { font-size: 36px; }
+      .privacy-layout { display: block; padding: 22px 0 0; }
+      .privacy-summary { break-inside: avoid; background: none; }
+      .policy-section h2 { break-after: avoid; }
+      .policy-section p { orphans: 3; widows: 3; }
+      .policy-section p, .privacy-summary p, .privacy-subtitle, .policy-date { color: #222; font-size: 11pt; }
+      .policy-contact-card { background: none; break-inside: avoid; }
+      a { color: black !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;overflow:hidden">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-up-right" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.8 7.2L22 12l-7.2 2.8L12 22l-2.8-7.2L2 12l7.2-2.8Z"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3"/></symbol>
+      <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3"/><path d="M7 14h10v7H7zM16 11h1"/></symbol>
+      <symbol id="w-mark" viewBox="0 0 48 48"><rect width="48" height="48" rx="15" fill="#1d4438"/><path d="m9 17 7 18 8-14 8 14 7-18" fill="none" stroke="#d9ef9e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="11" r="2" fill="#ee795b"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="#home" aria-label="Wondrous Studio, home">
+        <svg class="brand-mark" aria-hidden="true"><use href="#w-mark"/></svg>
+        <span class="brand-name">Wondrous<small>STUDIO</small></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <div class="tabs" id="page-tabs" aria-label="Studio pages">
+          <a class="tab" id="tab-home" href="#home" aria-controls="home">Home</a>
+          <a class="tab" id="tab-privacy" href="#privacy" aria-controls="privacy">Privacy</a>
+        </div>
+      </nav>
+      <a class="header-contact" href="mailto:vtmytien240901@gmail.com">Say hello <span class="circle-link"><svg class="icon" aria-hidden="true"><use href="#i-up-right"/></svg></span></a>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section id="home" aria-labelledby="tab-home" tabindex="-1">
+      <div class="wrap">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="dot"></span> A playful game studio</p>
+            <h1 id="hero-title">Small games.<br><span class="serif">Big wonder.</span></h1>
+            <p class="hero-description">A little challenge. A happy discovery. We make room for more play in your everyday.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#studio">Meet the studio <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="text-link" href="#contact">Get in touch <svg class="icon" aria-hidden="true"><use href="#i-up-right"/></svg></a>
+            </div>
+            <p class="hero-footnote"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg> A little curiosity goes a long way.</p>
+          </div>
+          <div class="hero-art" role="img" aria-label="A playful illustration of colorful puzzle tiles, a smiling green character, and a golden star.">
+            <svg viewBox="0 0 620 590" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <pattern id="art-grid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#d5decc" stroke-width="1"/></pattern>
+                <clipPath id="art-clip"><rect x="42" y="35" width="534" height="520" rx="240"/></clipPath>
+                <linearGradient id="tile-green" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e5f7b9"/><stop offset="1" stop-color="#cee88c"/></linearGradient>
+                <linearGradient id="tile-peach" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffad8b"/><stop offset="1" stop-color="#ef8666"/></linearGradient>
+                <filter id="art-shadow" x="-40%" y="-40%" width="180%" height="200%"><feDropShadow dx="0" dy="17" stdDeviation="15" flood-color="#2e5135" flood-opacity=".15"/></filter>
+                <filter id="small-shadow" x="-50%" y="-50%" width="200%" height="220%"><feDropShadow dx="0" dy="9" stdDeviation="9" flood-color="#2e5135" flood-opacity=".13"/></filter>
+              </defs>
+              <rect x="42" y="35" width="534" height="520" rx="240" fill="#e9eddd"/>
+              <g clip-path="url(#art-clip)"><rect x="42" y="35" width="534" height="520" fill="url(#art-grid)"/><circle cx="310" cy="291" r="192" fill="none" stroke="#d1ddc3" stroke-width="1.3"/><circle cx="310" cy="291" r="243" fill="none" stroke="#d1ddc3" stroke-width="1.3"/></g>
+              <ellipse cx="312" cy="482" rx="182" ry="26" fill="#c5d2b8" opacity=".28"/>
+              <path d="M62 290C13 367 122 479 318 485c177 5 287-58 262-146" fill="none" stroke="#98ad81" stroke-width="1.4" stroke-dasharray="4 7"/>
+              <g transform="rotate(-10 318 294)">
+                <rect x="171" y="109" width="302" height="365" rx="44" fill="#294f3d" filter="url(#art-shadow)"/>
+                <rect x="168" y="99" width="302" height="365" rx="44" fill="#37644c"/>
+                <rect x="184" y="115" width="270" height="329" rx="31" fill="#fffbed"/>
+                <rect x="273" y="127" width="93" height="7" rx="3.5" fill="#dfe4ce"/>
+                <text x="204" y="158" fill="#587050" font-family="Arial, sans-serif" font-size="8" font-weight="700" letter-spacing="2">A MOMENT OF PLAY</text>
+                <circle cx="432" cy="154" r="7" fill="#e8eddd"/><path d="m430 151 4 3-4 3" fill="#567047"/>
+                <rect x="201" y="176" width="236" height="238" rx="16" fill="#e9ecdb"/>
+                <g fill="#d7dfc6"><rect x="207" y="182" width="70" height="70" rx="13"/><rect x="284" y="182" width="70" height="70" rx="13"/><rect x="361" y="182" width="70" height="70" rx="13"/><rect x="207" y="260" width="70" height="70" rx="13"/><rect x="284" y="260" width="70" height="70" rx="13"/><rect x="361" y="260" width="70" height="70" rx="13"/><rect x="207" y="338" width="70" height="70" rx="13"/><rect x="284" y="338" width="70" height="70" rx="13"/><rect x="361" y="338" width="70" height="70" rx="13"/></g>
+                <rect x="207" y="179" width="70" height="70" rx="13" fill="#eaa14e"/><rect x="207" y="176" width="70" height="68" rx="13" fill="#f4cd68"/>
+                <rect x="284" y="179" width="70" height="70" rx="13" fill="#d17655"/><rect x="284" y="176" width="70" height="68" rx="13" fill="url(#tile-peach)"/>
+                <rect x="361" y="179" width="70" height="70" rx="13" fill="#a4bf6c"/><rect x="361" y="176" width="70" height="68" rx="13" fill="url(#tile-green)"/>
+                <rect x="207" y="257" width="70" height="70" rx="13" fill="#9fb970"/><rect x="207" y="254" width="70" height="68" rx="13" fill="url(#tile-green)"/>
+                <rect x="284" y="257" width="70" height="70" rx="13" fill="#6d9473"/><rect x="284" y="254" width="70" height="68" rx="13" fill="#92b695"/>
+                <rect x="361" y="257" width="70" height="70" rx="13" fill="#e2a44a"/><rect x="361" y="254" width="70" height="68" rx="13" fill="#f4cd68"/>
+                <rect x="207" y="335" width="70" height="70" rx="13" fill="#cc7658"/><rect x="207" y="332" width="70" height="68" rx="13" fill="url(#tile-peach)"/>
+                <rect x="284" y="335" width="70" height="70" rx="13" fill="#a4bf6c"/><rect x="284" y="332" width="70" height="68" rx="13" fill="url(#tile-green)"/>
+                <g fill="none" stroke="#466b3d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M242 224v-26m-10 10 10-10 10 10"/><path d="M384 210h24m-9-10 10 10-10 10"/><path d="M230 288h24m-10-10 10 10-10 10"/><path d="M309 365h23m-9-10 10 10-10 10"/></g>
+                <g fill="none" stroke="#9d4e36" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M319 197v26m-10-10 10 10 10-10"/><path d="M242 355v26m-10-10 10 10 10-10"/></g>
+                <path d="M396 275v26m-10-10 10 10 10-10" fill="none" stroke="#9b742b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="m319 272 4 10 11 5-11 4-4 11-4-11-11-4 11-5Z" fill="#f5f5df"/>
+                <path d="M386 367h20m-10-10v20" stroke="#9fb084" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="309" cy="428" r="3" fill="#50744e"/><circle cx="320" cy="428" r="3" fill="#d1dac2"/><circle cx="331" cy="428" r="3" fill="#d1dac2"/>
+              </g>
+              <g class="art-float">
+                <g transform="rotate(12 487 112)" filter="url(#small-shadow)">
+                  <path d="m487 55 17 32 36 6-26 27 4 37-32-17-33 16 6-36-25-27 36-5Z" fill="#e2aa3e"/>
+                  <path d="m487 49 17 32 36 6-26 27 4 37-32-17-33 16 6-36-25-27 36-5Z" fill="#f4cc61"/>
+                  <ellipse cx="478" cy="104" rx="3" ry="5" fill="#815b29"/><ellipse cx="496" cy="104" rx="3" ry="5" fill="#815b29"/>
+                  <path d="M480 116q7 7 14 0" stroke="#815b29" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                  <path d="m477 72-8 16" stroke="#ffe6a3" stroke-width="4" stroke-linecap="round"/>
+                </g>
+              </g>
+              <g class="art-float-slow">
+                <g transform="rotate(8 138 414)" filter="url(#small-shadow)">
+                  <rect x="76" y="361" width="132" height="125" rx="43" fill="#a5bd6b"/>
+                  <rect x="76" y="352" width="132" height="125" rx="43" fill="url(#tile-green)"/>
+                  <path d="M92 384q3-17 20-19" fill="none" stroke="#f2ffd7" stroke-width="5" stroke-linecap="round"/>
+                  <ellipse cx="123" cy="407" rx="5.5" ry="9" fill="#385538"/><ellipse cx="159" cy="407" rx="5.5" ry="9" fill="#385538"/>
+                  <path d="M129 427q13 15 26 0" fill="none" stroke="#385538" stroke-width="4" stroke-linecap="round"/>
+                  <ellipse cx="108" cy="425" rx="10" ry="5" fill="#e8b389" opacity=".8"/><ellipse cx="175" cy="425" rx="10" ry="5" fill="#e8b389" opacity=".8"/>
+                </g>
+              </g>
+              <g transform="rotate(18 507 425)"><ellipse cx="507" cy="425" rx="35" ry="37" fill="#ce6f51"/><ellipse cx="507" cy="419" rx="35" ry="37" fill="#ef8d6b"/><ellipse cx="507" cy="418" rx="18" ry="20" fill="#d66f50"/><ellipse cx="507" cy="423" rx="17" ry="18" fill="#e8eddd"/><path d="M485 400q7-9 17-10" fill="none" stroke="#ffc2a1" stroke-width="4" stroke-linecap="round"/></g>
+              <path d="m109 136 5 13 14 5-14 5-5 14-5-14-14-5 14-5Z" fill="#ee795b"/>
+              <path d="m543 277 4 10 10 4-10 4-4 10-4-10-10-4 10-4Z" fill="#4d7556"/>
+              <circle cx="97" cy="263" r="7" fill="#f4cd68"/><circle cx="429" cy="524" r="5" fill="#8da66c"/>
+              <path d="m153 91 2-12m11 19 9-8" stroke="#8ba17a" stroke-width="2.5" stroke-linecap="round"/>
+              <g transform="rotate(-6 340 529)"><rect x="244" y="513" width="199" height="31" rx="15.5" fill="#fffef6" stroke="#d9e0ce"/><circle cx="263" cy="528" r="3.5" fill="#67934b"/><text x="276" y="532" fill="#546947" font-family="Arial,sans-serif" font-size="8.5" letter-spacing="1.35" font-weight="600">GOOD THINGS COME IN PLAY.</text></g>
+            </svg>
+          </div>
+        </section>
+
+        <div class="intro-strip">
+          <p>Thoughtful by design. Playful at heart.</p>
+          <div class="intro-tags" aria-label="Our creative values">
+            <span class="intro-tag"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg> Curiosity</span>
+            <span class="intro-tag"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg> Creativity</span>
+            <span class="intro-tag"><svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg> Little joys</span>
+          </div>
+        </div>
+
+        <section class="studio" id="studio" aria-labelledby="studio-title">
+          <div class="studio-heading">
+            <div>
+              <p class="eyebrow">The Wondrous way</p>
+              <h2 class="section-title" id="studio-title">Serious about<br><span class="serif">the joy of play.</span></h2>
+            </div>
+            <p class="studio-description">Wondrous Studio is built around a simple idea: even a small game can brighten a day. Our creative compass is simple, too — welcoming ideas, thoughtful details, and room for a little surprise.</p>
+          </div>
+          <div class="values">
+            <article class="value">
+              <div class="value-top"><svg class="value-symbol" viewBox="0 0 48 48" aria-hidden="true"><rect x="3" y="4" width="37" height="37" rx="12" fill="#d3e7a5"/><path d="M15 23h16m-6-6 6 6-6 6" fill="none" stroke="#46613d" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="value-number">01 /</span></div>
+              <h3>Easy to step into.</h3>
+              <p>Simple ideas that invite you in. A moment of play should feel like a welcome break.</p>
+            </article>
+            <article class="value">
+              <div class="value-top"><svg class="value-symbol" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 40S5 29 5 17C5 6 18 4 24 14 30 4 43 6 43 17c0 12-19 23-19 23Z" fill="#eea287"/><path d="m16 23 5 5 11-11" fill="none" stroke="#9c533c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="value-number">02 /</span></div>
+              <h3>Care in every detail.</h3>
+              <p>Clear visuals, satisfying moments, and thoughtful touches that make play feel good.</p>
+            </article>
+            <article class="value">
+              <div class="value-top"><svg class="value-symbol" viewBox="0 0 48 48" aria-hidden="true"><path d="m24 3 6 14 15 7-15 6-6 15-6-15-15-6 15-7Z" fill="#ecc76b"/><circle cx="24" cy="24" r="5" fill="#fff6d9"/></svg><span class="value-number">03 /</span></div>
+              <h3>A spark of discovery.</h3>
+              <p>A new perspective. An unexpected solution. That lovely little “one more try.”</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="contact" id="contact" aria-labelledby="contact-title">
+          <div>
+            <p class="eyebrow">Let’s make a connection</p>
+            <h2 id="contact-title">Good things start<br>with <span class="serif">a hello.</span></h2>
+            <p>Questions, feedback, or an idea to share?<br>We’d love to hear from you.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="email-link" href="mailto:vtmytien240901@gmail.com">vtmytien240901@gmail.com <svg class="icon" aria-hidden="true"><use href="#i-up-right"/></svg></a>
+            <div class="copy-row">
+              <button class="copy-button" id="copy-email" type="button" hidden><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg> Copy email address</button>
+              <div class="copy-status" id="copy-status" role="status" aria-live="polite"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- This policy describes this static website only. Before using it as a game
+         privacy policy, add the game's real data practices, SDKs, providers,
+         retention periods, age audience, and applicable privacy choices. -->
+    <section id="privacy" aria-labelledby="tab-privacy" tabindex="-1">
+      <div class="wrap">
+        <div class="privacy-top">
+          <div>
+            <p class="eyebrow"><span class="dot"></span> Clear, considered, transparent</p>
+            <h1>Privacy <span class="serif">Policy.</span></h1>
+            <p class="privacy-subtitle">This website &amp; contact enquiries.<br>How information is handled when you visit or say hello.</p>
+            <span class="policy-date">Last updated: <time datetime="2026-11-02">2 November 2026</time></span>
+          </div>
+          <button class="button button-outline print-button" id="print-policy" type="button" hidden><svg class="icon" aria-hidden="true"><use href="#i-print"/></svg> Print policy</button>
+        </div>
+        <div class="privacy-layout">
+          <aside class="privacy-nav">
+            <nav aria-label="Privacy policy contents">
+              <h2>On this page</h2>
+              <ol>
+                <li><a href="#policy-about">About this notice</a></li>
+                <li><a href="#policy-website">Using this website</a></li>
+                <li><a href="#policy-email">Contacting us</a></li>
+                <li><a href="#policy-providers">Service providers</a></li>
+                <li><a href="#policy-retention">Keeping information</a></li>
+                <li><a href="#policy-choices">Your choices</a></li>
+                <li><a href="#policy-children">Children’s information</a></li>
+                <li><a href="#policy-contact">Updates &amp; contact</a></li>
+              </ol>
+            </nav>
+            <div class="privacy-help"><p>Have a privacy question?</p><a href="mailto:vtmytien240901@gmail.com">Let’s talk <svg class="icon" aria-hidden="true"><use href="#i-up-right"/></svg></a></div>
+          </aside>
+          <div class="policy-body">
+            <div class="privacy-summary">
+              <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
+              <div><h2>A simple website. A clear scope.</h2><p>This page has no account registration, analytics, or advertising trackers. This notice covers this website. For information about a specific Wondrous Studio game, check the notice linked in that game or contact us.</p></div>
+            </div>
+            <section class="policy-section" id="policy-about">
+              <h2><span>01</span> About this notice</h2>
+              <p>This notice explains privacy considerations when you visit the Wondrous Studio website or contact us by email. It covers this website and contact enquiries. It does not describe the data practices of a particular game.</p>
+              <p>For privacy information about a specific Wondrous Studio game, check the notice linked in that game or contact <a href="mailto:vtmytien240901@gmail.com">vtmytien240901@gmail.com</a>.</p>
+            </section>
+            <section class="policy-section" id="policy-website">
+              <h2><span>02</span> Using this website</h2>
+              <p>This website does not ask you to create an account or enter personal information into a form. The page itself does not set cookies, run analytics, display advertisements, or load third-party tracking pixels. Its navigation and visual interactions run in your browser.</p>
+              <p>When the website is hosted online, the hosting service may process technical request information, such as an IP address, browser information, the requested page, and the time of access. The information recorded and how long it is kept depend on the hosting configuration.</p>
+            </section>
+            <section class="policy-section" id="policy-email">
+              <h2><span>03</span> Contacting us by email</h2>
+              <p>Choosing an email link opens your email application. A message is sent only if you choose to send it.</p>
+              <p>If you email us, we receive your email address, the contents of your message, and any name, attachments, or other information you include. This information is used to understand and respond to your enquiry and manage related correspondence.</p>
+              <p>Please include only information relevant to your request. Do not send passwords, complete payment-card details, or other unnecessary sensitive information.</p>
+            </section>
+            <section class="policy-section" id="policy-providers">
+              <h2><span>04</span> Service providers and links</h2>
+              <p>Email messages are handled by the email services used by you and Wondrous Studio. Website hosting services may also process technical information needed to deliver the website and operate their infrastructure.</p>
+              <p>These services have their own privacy practices. If you follow a link to another website or service, review its privacy notice before providing information there. This page does not control the content, settings, or data practices of those services.</p>
+            </section>
+            <section class="policy-section" id="policy-retention">
+              <h2><span>05</span> Keeping information</h2>
+              <p>Email correspondence may remain in the studio’s email system while an enquiry and any related follow-up are being handled. Retention can also depend on recordkeeping needs and applicable legal obligations.</p>
+              <p>You can contact us to ask about information you have sent or request its deletion. Information held by service providers, including backups or technical logs, may be subject to their own retention arrangements.</p>
+            </section>
+            <section class="policy-section" id="policy-choices">
+              <h2><span>06</span> Your choices and requests</h2>
+              <p>You can browse this page without sending us an email or providing information through a form.</p>
+              <p>To ask about personal information you have shared, request a correction, or request deletion, email <a href="mailto:vtmytien240901@gmail.com">vtmytien240901@gmail.com</a>. Describe your request and provide enough information to identify the relevant correspondence. Additional information may be needed to verify a request before disclosing or changing personal information.</p>
+              <p>Depending on the laws that apply to you, you may have other rights concerning personal information.</p>
+            </section>
+            <section class="policy-section" id="policy-children">
+              <h2><span>07</span> Information about children</h2>
+              <p>This website has no account registration or features asking children to submit personal information.</p>
+              <p>If you believe a child has sent personal information to Wondrous Studio through the contact email, please contact us so the matter can be reviewed. A game’s age suitability and its data practices should be assessed using that game’s own information.</p>
+            </section>
+            <section class="policy-section" id="policy-contact">
+              <h2><span>08</span> Updates and contact</h2>
+              <p>This notice may be updated when the website or the information it provides changes. The date above identifies the latest revision.</p>
+              <p>For questions about this notice, website privacy, or where to find information about a specific game, contact:</p>
+              <div class="policy-contact-card"><strong>Wondrous Studio</strong><a href="mailto:vtmytien240901@gmail.com">vtmytien240901@gmail.com</a></div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <noscript><p>JavaScript is off. Both pages are displayed, and the Home and Privacy links still take you to their sections.</p></noscript>
+  <footer class="site-footer">
+    <div class="footer-inner wrap">
+      <div class="footer-left"><svg class="footer-mark" aria-hidden="true"><use href="#w-mark"/></svg><span>© <span id="copyright-year">2026</span> Wondrous Studio</span></div>
+      <span class="footer-tagline">A little play. A little wonder.</span>
+      <nav class="footer-links" aria-label="Footer navigation"><a href="#home">Home</a><a href="#privacy">Privacy Policy</a><a href="mailto:vtmytien240901@gmail.com">Contact</a></nav>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const home = document.getElementById('home');
+      const privacy = document.getElementById('privacy');
+      const tabs = Array.from(document.querySelectorAll('.tab'));
+      const tablist = document.getElementById('page-tabs');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const email = 'vtmytien240901@gmail.com';
+      tablist.setAttribute('role', 'tablist');
+      tabs.forEach(tab => tab.setAttribute('role', 'tab'));
+      [home, privacy].forEach(panel => {
+        panel.setAttribute('role', 'tabpanel');
+        panel.tabIndex = 0;
+      });
+
+      function currentAnchor() {
+        try { return decodeURIComponent(window.location.hash.slice(1)); }
+        catch (_) { return ''; }
+      }
+
+      function renderRoute(scrollToTarget = false) {
+        const anchor = currentAnchor();
+        const query = new URLSearchParams(window.location.search);
+        const showPrivacy = anchor === 'privacy' || anchor.startsWith('policy-') ||
+          (!anchor && (query.get('tab') === 'privacy' || query.get('page') === 'privacy'));
+        const activeName = showPrivacy ? 'privacy' : 'home';
+        home.hidden = showPrivacy;
+        privacy.hidden = !showPrivacy;
+        tabs.forEach(tab => {
+          const selected = tab.id === 'tab-' + activeName;
+          tab.setAttribute('aria-selected', String(selected));
+          tab.tabIndex = selected ? 0 : -1;
+        });
+        document.title = showPrivacy ? 'Privacy Policy — Wondrous Studio' : 'Wondrous Studio — Small games. Big wonder.';
+        if (scrollToTarget) {
+          requestAnimationFrame(() => {
+            const target = document.getElementById(anchor);
+            if (!anchor || anchor === 'home' || anchor === 'privacy') {
+              window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+            } else if (target) {
+              target.scrollIntoView({ block: 'start', behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+            }
+          });
+        }
+      }
+
+      tablist.addEventListener('keydown', event => {
+        const index = tabs.indexOf(document.activeElement);
+        if (index < 0) return;
+        let next;
+        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+        else if (event.key === 'Home') next = 0;
+        else if (event.key === 'End') next = tabs.length - 1;
+        else if (event.key === ' ') next = index;
+        else return;
+        event.preventDefault();
+        tabs[next].focus();
+        tabs[next].click();
+      });
+
+      document.addEventListener('click', event => {
+        const link = event.target.closest('a[href^="#"]');
+        if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const hash = link.getAttribute('href');
+        if (link.getAttribute('role') === 'tab') {
+          event.preventDefault();
+          if (hash !== window.location.hash) window.history.pushState(null, '', hash);
+          renderRoute(true);
+          link.focus({ preventScroll: true });
+          return;
+        }
+        if (link.classList.contains('skip-link')) {
+          event.preventDefault();
+          const main = document.getElementById('main');
+          main.focus({ preventScroll: true });
+          main.scrollIntoView({ block: 'start', behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+          return;
+        }
+        // Repeated clicks on the active route still return to its start.
+        if (hash === window.location.hash) {
+          event.preventDefault();
+          renderRoute(true);
+        }
+      });
+
+      window.addEventListener('hashchange', () => renderRoute(true));
+      renderRoute(Boolean(window.location.hash));
+      document.getElementById('copyright-year').textContent = String(new Date().getFullYear());
+
+      const copyButton = document.getElementById('copy-email');
+      const copyStatus = document.getElementById('copy-status');
+      let copyStatusTimer;
+      copyButton.hidden = false;
+      copyButton.addEventListener('click', async () => {
+        clearTimeout(copyStatusTimer);
+        let copied = false;
+        if (navigator.clipboard && window.isSecureContext) {
+          try { await navigator.clipboard.writeText(email); copied = true; } catch (_) { /* Use the local-file fallback below. */ }
+        }
+        if (!copied) {
+          const field = document.createElement('textarea');
+          field.value = email;
+          field.setAttribute('readonly', '');
+          field.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+          document.body.appendChild(field);
+          field.select();
+          try { copied = document.execCommand('copy'); } catch (_) { copied = false; }
+          field.remove();
+          copyButton.focus({ preventScroll: true });
+        }
+        copyStatus.textContent = copied ? 'Email address copied.' : 'Select the email address above to copy it.';
+        copyStatusTimer = setTimeout(() => { copyStatus.textContent = ''; }, 4500);
+      });
+
+      const printButton = document.getElementById('print-policy');
+      printButton.hidden = false;
+      printButton.addEventListener('click', () => window.print());
+    })();
+  </script>
+</body>
+</html>
